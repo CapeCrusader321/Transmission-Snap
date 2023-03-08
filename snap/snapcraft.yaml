@@ -1,0 +1,83 @@
+name: thonny-ide
+base: core22
+adopt-info: thonny
+summary: Python IDE for beginners
+description: |
+  Thonny is a Python IDE meant for learning programming.
+grade: stable
+confinement: strict
+compression: lzo
+
+architectures:
+  - build-on: amd64
+    build-for: amd64
+    
+#slots
+#thonny-ide
+#interface: dbus
+#bus: session
+#name: org.thonny-ide.thonny
+
+apps:
+  thonny-ide:
+    command: bin/thonny
+    extensions: [gnome]
+    common-id: org.thonny-ide.thonny
+    environment:
+            THONNY_USER_DIR: $SNAP_USER_DATA
+            #GTK_USE_PORTAL: 1
+    plugs:
+      #- desktop
+      - home
+      #- mount-observe
+      - network
+      - network-bind
+      - raw-usb
+      - removable-media
+      #- x11
+      #- desktop-legacy
+      - unity7
+      #- wayland
+      - screen-inhibit-control
+      #- opengl
+      
+
+parts:
+  thonny:
+    source: https://github.com/thonny/thonny.git
+    plugin: dump
+    build-packages:
+    - wget
+    - build-essential
+    override-pull: |
+      VER="$(git ls-remote --tags https://github.com/thonny/thonny.git | \
+           sed 's;^.*/v;;' | sort -t. -k 1,1n -k 2,2n -k 3,3n | tail -1)"
+      wget -q -O- https://github.com/thonny/thonny/releases/download/v${VER}/thonny-${VER}-x86_64.tar.gz |\
+           tar xzf - --strip-components=1 -C $CRAFT_PART_SRC
+      craftctl set version="${VER}"
+    override-build: |
+      craftctl default
+      # evil hack around some newer lib versions
+      cd $CRAFT_PART_INSTALL/usr/lib/$CRAFT_ARCH_TRIPLET/
+      ln -sf libffi.so.7 libffi.so.6
+      ln -sf libgdbm.so.6 libgdbm.so.3
+      ln -sf libgdbm_compat.so.4 libgdbm_compat.so.3
+      cd $CRAFT_PART_INSTALL/lib/$CRAFT_ARCH_TRIPLET/
+      ln -sf libreadline.so.8 libreadline.so.6
+    stage-packages:
+      - libffi7
+      - libfreetype6
+      - libfontconfig1
+      - libgdbm6
+      - libgdbm-compat4
+      - libncursesw5
+      - libpng16-16
+      - libreadline8
+      - libtinfo5
+      - libx11-6
+      - libxau6
+      - libxcb1
+      - libxdmcp6
+      - libxft2
+      - libxrender1
+      - mount
