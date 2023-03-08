@@ -1,7 +1,7 @@
-name: thonny-ide
+name: transmission-community
 base: core22
-adopt-info: thonny
-summary: Python IDE for beginners
+adopt-info: transmission
+summary: Lightweight FOSS Gtk Torrent Client.
 description: |
   Thonny is a Python IDE meant for learning programming.
 grade: stable
@@ -12,19 +12,19 @@ architectures:
   - build-on: amd64
     build-for: amd64
     
-#slots
-#thonny-ide
-#interface: dbus
-#bus: session
-#name: org.thonny-ide.thonny
+slots:
+  transmission-community:
+    interface: dbus
+    bus: session
+    name: org.community.transmission
 
 apps:
-  thonny-ide:
+  transmission:
     command: bin/thonny
     extensions: [gnome]
-    common-id: org.thonny-ide.thonny
-    environment:
-            THONNY_USER_DIR: $SNAP_USER_DATA
+    common-id: org.community.transmission
+    #environment:
+            #THONNY_USER_DIR: $SNAP_USER_DATA
             #GTK_USE_PORTAL: 1
     plugs:
       #- desktop
