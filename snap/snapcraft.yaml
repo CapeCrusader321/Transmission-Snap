@@ -16,7 +16,7 @@ slots:
   transmission-community:
     interface: dbus
     bus: session
-    name: org.community.transmission
+    name: org.transmission.community
 
 apps:
   transmission-community:
