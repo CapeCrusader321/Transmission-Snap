@@ -1,6 +1,6 @@
 name: transmission-community
 base: core22
-adopt-info: transmission
+adopt-info: transmission-community
 summary: Lightweight FOSS Gtk Torrent Client.
 description: |
   Transmission is a Lightweight and Powerful Bit-Torrent Client.
@@ -47,6 +47,11 @@ parts:
   transmission-community:
     source: https://github.com/transmission/transmission.git
     plugin: nil
+    override-pull: |
+      craftctl default
+      craftctl set version=$(git describe --tags --abbrev=10)
+      
+      
     build-packages:
       - curl
       - build-essential
