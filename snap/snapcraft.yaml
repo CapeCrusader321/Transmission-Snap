@@ -49,8 +49,7 @@ parts:
     plugin: nil
     override-pull: |
       craftctl default
-      craftctl set version=$(git describe --tags --abbrev=10)
-      
+      craftctl set version=$(git describe --tags --abbrev=10) 
       
     build-packages:
       - curl
