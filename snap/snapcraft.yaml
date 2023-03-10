@@ -44,7 +44,7 @@ apps:
       
 
 parts:
-  thonny:
+  transmission:
     source: https://github.com/transmission/transmission.git
     plugin: nil
     build-packages:
