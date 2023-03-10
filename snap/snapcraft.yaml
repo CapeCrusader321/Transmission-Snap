@@ -85,4 +85,4 @@ parts:
     parse-info: [usr/share/metainfo/transmission.appdata.xml]
     
     stage-packages:
-      - libminiupnpc.so.17
+      - libminiupnpc17
