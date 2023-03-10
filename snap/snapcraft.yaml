@@ -12,11 +12,11 @@ architectures:
   - build-on: amd64
     build-for: amd64
     
-#slots:
-  #transmission-community:
-    #interface: dbus
-    #bus: session
-    #name: org.community.transmission
+slots:
+  transmission-community:
+    interface: dbus
+    bus: session
+    name: org.community.transmission
 
 apps:
   transmission-community:
