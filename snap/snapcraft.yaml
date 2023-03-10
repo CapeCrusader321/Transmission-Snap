@@ -16,7 +16,7 @@ slots:
   transmission-community:
     interface: dbus
     bus: session
-    name: org.transmission.community
+    name: org.transmission-gtk.community
 
 apps:
   transmission-community:
@@ -24,24 +24,17 @@ apps:
     extensions: [gnome]
     common-id: org.community.transmission
     environment:
-            #DISABLE_WAYLAND: 1
-            #THONNY_USER_DIR: $SNAP_USER_DATA
             GTK_USE_PORTAL: 1
     plugs:
-      #- desktop
       - home
-      #- mount-observe
       - network
       - network-bind
       - raw-usb
       - removable-media
-      #- x11
-      #- desktop-legacy
       - unity7
-      #- wayland
       - screen-inhibit-control
       - process-control
-      #- opengl
+   
       
 
 parts:
@@ -83,7 +76,7 @@ parts:
       make -j$SNAPCRAFT_PARALLEL_BUILD_COUNT PREFIX=/usr
       make PREFIX=/usr DESTDIR=${SNAPCRAFT_PART_INSTALL} install 
       
-    parse-info: [usr/share/metainfo/transmission.appdata.xml]
+  
     
     stage-packages:
       - libminiupnpc17
