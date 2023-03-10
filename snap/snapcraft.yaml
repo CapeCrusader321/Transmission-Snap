@@ -20,7 +20,7 @@ slots:
 
 apps:
   transmission-community:
-    command: usr/bin/transmission
+    command: usr/local/bin/transmission-gtk
     extensions: [gnome]
     common-id: org.community.transmission
     environment:
@@ -83,4 +83,6 @@ parts:
       make PREFIX=/usr DESTDIR=${SNAPCRAFT_PART_INSTALL} install 
       
     parse-info: [usr/share/metainfo/transmission.appdata.xml]
-      
+    
+    stage-packages:
+      -libminiupnpc.so.17
