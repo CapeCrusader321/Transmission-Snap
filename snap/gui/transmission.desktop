@@ -3,12 +3,17 @@ Name=Transmission
 GenericName=BitTorrent Client
 Comment=Download and share files over BitTorrent
 Keywords=torrents;downloading;uploading;share;sharing;
-Exec=transmission-gtk %U
+Exec=transmission-community %U
 Icon=${SNAP}/meta/gui/transmission.svg
 Terminal=false
-TryExec=transmission-community
+TryExec=transmission-community %U
 Type=Application
 MimeType=application/x-bittorrent;x-scheme-handler/magnet;
 Categories=Network;FileTransfer;P2P;GTK;
+Actions=Edit;
+
+[Desktop Action Edit]
+Exec=transmission-gtk %U
+Name=Code with Thonny
 
 
