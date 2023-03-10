@@ -19,14 +19,14 @@ slots:
     name: org.community.transmission
 
 apps:
-  transmission:
+  transmission-community:
     command: usr/bin/transmission
     extensions: [gnome]
     common-id: org.community.transmission
     environment:
             DISABLE_WAYLAND: 1
             #THONNY_USER_DIR: $SNAP_USER_DATA
-            #GTK_USE_PORTAL: 1
+            GTK_USE_PORTAL: 1
     plugs:
       #- desktop
       - home
@@ -44,7 +44,7 @@ apps:
       
 
 parts:
-  transmission:
+  transmission-community:
     source: https://github.com/transmission/transmission.git
     plugin: nil
     build-packages:
