@@ -48,6 +48,8 @@ parts:
     source: https://github.com/transmission/transmission.git
     plugin: nil
     build-packages:
+    - cmake
+    - meson
     - curl
     - build-essential
     - automake
